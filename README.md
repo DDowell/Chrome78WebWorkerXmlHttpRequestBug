@@ -29,10 +29,10 @@ Steps to reproduce the cogwheel issue:
 3. Observe that the response is marked as 200 OK but the response body cannot be displayed and the cogwheel is still there even though the request has been fulfilled.
 
 -----------------------------------------------------------------------------------------------------------
+DISCLAIMER: I actually has not been able to reproduce this bug in this simple test. It does fail in our main application though with similar steps taken (albeit in a much more complex environment).
 Steps to reproduce the throttling issue:
 1. Navigate to the network tab in the Chrome Dev tools and set the network tab's throttling setting to Offline.
 2. Press "WWPOST" button on the web page. This will send a POST request to the server in a web worker thread.
 3. Note that the request goes through even though we are "offline".
 4. Press "STPOST". This will make a POST request to the server on the main thread.
 5. Note that the request fails as expected.
-DISCLAIMER: I actually has not been able to reproduce this bug in this simple test. It does fail in our main application though with similar steps taken (albeit in a much more complex environment).
