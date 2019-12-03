@@ -16,11 +16,11 @@ Initial steps:
 -----------------------------------------------------------------------------------------------------------
 Steps to reproduce the debugger issue:
 1. Open the Chrome Dev Tools and go to the source tab.
-2. Set a break point in the index.html source file on line X and another one on line Y.
+2. Set a break point in the index.html source file on line 10 and another one on line Y.
 3. Press the "WWPOST" button on the web page.
-4. Observe the behavior of Chrome dev tools at breakpoint on line X
-5. Continue running the script until breakpoint on line Y hits.
-6. Observe the behavior of Chrome dev tools at breakpoint on line Y.
+4. Observe the behavior of Chrome dev tools at breakpoint on line 10
+5. Continue running the script until breakpoint on line 12 hits.
+6. Observe the behavior of Chrome dev tools at breakpoint on line 12.
 
 -----------------------------------------------------------------------------------------------------------
 Steps to reproduce the cogwheel issue:
