@@ -1,0 +1,41 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8"/>
+	<title>Chrome78WebWorkerXmlHttpRequestBug</title>
+	<script>
+		function wwPostClicked() {
+			var worker = new Worker("wwAjax.js");
+			worker.onmessage = function(event) {
+				console.log(event.data.response); //Can we debug this? No we cannot. But what if we put in a setTimeout
+				setTimeout(function(){
+					console.log(event.data.response); //Can we debug this? Yes, now we can.
+					alert("Server said: \""+event.data.response+"\"");
+				},1);
+				
+			};
+			worker.postMessage({
+				type:"POST",
+				url:"/post",
+				data:"Hello from WWPOST"
+			});
+		}
+		
+		function stPostClicked() {
+			var xhttp = new XMLHttpRequest();
+			xhttp.onreadystatechange = function(){
+				if (this.readyState == 4 && this.status == 200) {
+					console.log(xhttp.responseText); //Can we debug this? Yes, we can.
+					alert("Server said: \""+xhttp.responseText+"\"");
+				}
+			};
+			xhttp.open("POST","/post");
+			xhttp.send("Hello from STPOST!");
+		}
+	</script>
+</head>
+<body>
+	<button onclick=wwPostClicked()>WWPOST</button>
+	<button onclick=stPostClicked()>STPOST</button>
+</body>
+</html>
